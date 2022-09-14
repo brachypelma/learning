@@ -1,14 +1,28 @@
 // use std::io;
 
 fn main() {
-  let mut degree = 32.0;
-  while degree <= 212.0 {
-    let celsius = fahrenheit_to_celsius(degree);
-    println!("{degree} degrees in fahrenheiht is {celsius} degrees in celsius");
-    degree += 1.0;
+  for num in (1..10) {
+    let fib = nth_fibonacci(num);
+    println!("The {num}th fibonacci number is {fib}");
   }
 }
 
-fn fahrenheit_to_celsius(deg: f64) -> f64 {
-  ((deg - 32.0) * 5.0) / 9.0
+fn nth_fibonacci(num: i32) -> i32 {
+  let mut a = 0;
+  let mut b = 1;
+  let mut c = a + b;
+  let mut counter = 0;
+
+  let result = loop {
+    c = a + b;
+    a = b;
+    b = c;
+    counter += 1;
+
+    if counter == num {
+      break c;
+    }
+  };
+
+  return result;
 }
